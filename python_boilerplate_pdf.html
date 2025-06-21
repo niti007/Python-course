@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Boilerplate Collection - Complete Reference Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ffd700, #ff6b6b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+            background: #f8fafc;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title .emoji {
+            font-size: 2.5rem;
+        }
+        
+        .section-description {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+        
+        .code-block {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            position: relative;
+            overflow-x: auto;
+            border: 1px solid #2d3748;
+        }
+        
+        .code-block::before {
+            content: attr(data-language);
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(102, 126, 234, 0.2);
+            color: #a0aec0;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+        
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%);
+            border: 1px solid #81e6d9;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+        
+        .tip-box::before {
+            content: '💡';
+            font-size: 1.5rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: white;
+            padding: 5px;
+            border-radius: 50%;
+        }
+        
+        .tip-box .tip-title {
+            font-weight: 600;
+            color: #234e52;
+            margin-bottom: 8px;
+            margin-left: 20px;
+        }
+        
+        .tip-box .tip-content {
+            color: #2c7a7b;
+            margin-left: 20px;
+            font-weight: 400;
+        }
+        
+        .folder-structure {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 25px;
+            border-radius: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            border-left: 4px solid #667eea;
+        }
+        
+        .folder-structure .folder {
+            color: #ffd700;
+            font-weight: 500;
+        }
+        
+        .folder-structure .file {
+            color: #81e6d9;
+        }
+        
+        .folder-structure .comment {
+            color: #a0aec0;
+            font-style: italic;
+        }
+        
+        .command-line {
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            margin: 15px 0;
+            border-left: 4px solid #00ff00;
+        }
+        
+        .command-line::before {
+            content: '$ ';
+            color: #00ff00;
+            font-weight: bold;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .mini-section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .mini-section h4 {
+            color: #2d3748;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+            
+            .code-block {
+                page-break-inside: avoid;
+            }
+        }
+        
+        /* Syntax highlighting colors */
+        .keyword { color: #c792ea; }
+        .string { color: #c3e88d; }
+        .comment { color: #676e95; }
+        .function { color: #82aaff; }
+        .number { color: #f78c6c; }
+        .operator { color: #89ddff; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>🐍 Python Boilerplate Collection</h1>
+                <p>Complete Reference Guide - Ready-to-Use Templates & Code Snippets</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- Section 1: Project Structure -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="emoji">📦</span>
+                    1. Python Project Boilerplate (Folder Structure)
+                </h2>
+                <p class="section-description">
+                    Professional project structure following Python best practices for maintainable and scalable applications.
+                </p>
+                
+                <div class="folder-structure">
+<pre><span class="folder">my_project/</span>
+│
+├── <span class="folder">src/</span>                    <span class="comment"># Main codebase</span>
+│   ├── <span class="file">__init__.py</span>
+│   ├── <span class="file">main.py</span>
+│   └── <span class="file">utils.py</span>
+│
+├── <span class="folder">tests/</span>                  <span class="comment"># Unit tests</span>
+│   ├── <span class="file">__init__.py</span>
+│   └── <span class="file">test_main.py</span>
+│
+├── <span class="file">requirements.txt</span>         <span class="comment"># Required libraries</span>
+├── <span class="file">README.md</span>               <span class="comment"># Project description</span>
+└── <span class="file">.gitignore</span>              <span class="comment"># Files to ignore in Git</span></pre>
+                </div>
+                
+                <div class="tip-box">
+                    <div class="tip-title">💡 Pro Tip</div>
+                    <div class="tip-content">Use <code>cookiecutter</code> to auto-generate this structure with custom templates for faster project setup.</div>
+                </div>
+            </div>
+
+            <!-- Section 2: Unit Testing -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="emoji">🧪</span>
+                    2. Unit Test Boilerplate
+                </h2>
+                <p class="section-description">
+                    Built-in test template using unittest for reliable code validation and quality assurance.
+                </p>
+                
+                <div class="code-block" data-language="python">
+<pre><span class="comment"># ✅ Built-in test template using unittest</span>
+<span class="keyword">import</span> unittest
+<span class="keyword">from</span> src.main <span class="keyword">import</span> add_numbers
+
+<span class="keyword">class</span> <span class="function">TestAddNumbers</span>(unittest.TestCase):
+    <span class="keyword">def</span> <span class="function">test_add</span>(self):
+        self.assertEqual(add_numbers(<span class="number">2</span>, <span class="number">3</span>), <span class="number">5</span>)
+        self.assertNotEqual(add_numbers(<span class="number">1</span>, <span class="number">2</span>), <span class="number">10</span>)
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    unittest.main()</pre>
+                </div>
+                
+                <div class="command-line">python -m unittest tests/test_main.py -v</div>
+            </div>
+
+            <!-- Section 3: Logging -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="emoji">⚙️</span>
+                    3. Logging + Config Boilerplate
+                </h2>
+                <p class="section-description">
+                    Professional logging setup to track errors, events, and application flow for debugging and monitoring.
+                </p>
+                
+                <div class="code-block" data-language="python">
+<pre><span class="comment"># ✅ Set up logging to track errors and events (src/utils.py)</span>
+<span class="keyword">import</span> logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format=<span class="string">'%(asctime)s - %(levelname)s - %(message)s'</span>,
+)
+
+<span class="keyword">def</span> <span class="function">get_logger</span>(name):
+    <span class="keyword">return</span> logging.getLogger(name)</pre>
+                </div>
+                
+                <div class="code-block" data-language="python">
+<pre><span class="comment"># ✅ Example usage</span>
+<span class="keyword">from</span> src.utils <span class="keyword">import</span> get_logger
+
+logger = get_logger(__name__)
+logger.info(<span class="string">"Application started"</span>)</pre>
+                </div>
+            </div>
+
+            <!-- Section 4: FastAPI -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="emoji">🚀</span>
+                    4. FastAPI Boilerplate (API Starter)
+                </h2>
+                <p class="section-description">
+                    Modern, fast web API framework with automatic documentation and type hints support.
+                </p>
+                
+                <div class="code-block" data-language="python">
+<pre><span class="comment"># ✅ src/main.py – Simple FastAPI app</span>
+<span class="keyword">from</span> fastapi <span class="keyword">import</span> FastAPI
+
+app = FastAPI()
+
+<span class="operator">@</span>app.get(<span class="string">"/"</span>)
+<span class="keyword">def</span> <span class="function">read_root</span>():
+    <span class="keyword">return</span> {<span class="string">"message"</span>: <span class="string">"Hello World"</span>}
+
+<span class="operator">@</span>app.get(<span class="string">"/add"</span>)
+<span class="keyword">def</span> <span class="function">add</span>(a: int, b: int):
+    <span class="keyword">return</span> {<span class="string">"result"</span>: a + b}</pre>
+                </div>
+                
+                <div class="command-line">uvicorn src.main:app --reload</div>
+            </div>
+
+            <!-- Section 5: GitHub -->
+            <div class="section">
+                <h2 class="section-title">
+                    <span class="emoji">📥</span>
+                    5. GitHub Push Boilerplate
+                </h2>
+                <p class="section-description">
+                    Quick commands to initialize Git repository and push to GitHub for version control.
+                </p>
+                
+                <div class="code-block" data-language="bash">
+<pre><span class="comment"># ✅ Create and push a GitHub repo from terminal</span>
+git init
+git add .
+git commit -m <span class="string">"Initial commit"</span>
+git remote add origin https://github.com/yourusername/yourrepo.git
+git push -u origin main</pre>
+                </div>
+            </div>
+
+            <!-- Additional Boilerplates Grid -->
+            <div class="grid">
+                <div class="mini-section">
+                    <h4>📜 6. ChatGPT Prompt Examples</h4>
+                    <div class="code-block" data-language="markdown">
+<pre><span class="comment">## ✅ Generate Python function</span>
+<span class="string">"Write a Python function that takes a list of integers and returns only the even numbers."</span>
+
+<span class="comment">## ✅ Explain complex code</span>
+<span class="string">"Explain what this function does, line-by-line with comments: [PASTE CODE]"</span></pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🔄 7. Code Template Snippet</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># ✅ Common input parsing for scripts</span>
+<span class="keyword">import</span> argparse
+
+<span class="keyword">def</span> <span class="function">main</span>():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(<span class="string">'--file'</span>, type=str, 
+                       help=<span class="string">'Path to input file'</span>)
+    args = parser.parse_args()
+    
+    print(<span class="string">f"Processing file: {args.file}"</span>)
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    main()</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🔁 8. General Python Script</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># 📦 General Python Script Boilerplate</span>
+<span class="keyword">import</span> os
+<span class="keyword">import</span> sys
+<span class="keyword">import</span> logging
+
+<span class="comment"># Setup basic logging</span>
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+<span class="keyword">def</span> <span class="function">main</span>():
+    logger.info(<span class="string">"Script started"</span>)
+    <span class="comment"># Your logic here</span>
+    logger.info(<span class="string">"Script completed"</span>)
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    main()</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>📊 9. Data Science Setup</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># 📈 Data Science Boilerplate</span>
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> seaborn <span class="keyword">as</span> sns
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+
+<span class="comment"># Set plot style</span>
+sns.set(style=<span class="string">"whitegrid"</span>)
+
+<span class="comment"># Sample dataframe</span>
+df = pd.DataFrame({
+    <span class="string">'x'</span>: np.arange(<span class="number">10</span>),
+    <span class="string">'y'</span>: np.random.rand(<span class="number">10</span>)
+})
+
+<span class="comment"># Plot</span>
+sns.lineplot(data=df, x=<span class="string">'x'</span>, y=<span class="string">'y'</span>)
+plt.title(<span class="string">"Sample Line Plot"</span>)
+plt.show()</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🤖 10. Machine Learning</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># 🤖 ML Model Training Boilerplate</span>
+<span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split
+<span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression
+<span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error
+
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+
+<span class="comment"># Dummy data</span>
+X = np.array([[<span class="number">1</span>], [<span class="number">2</span>], [<span class="number">3</span>], [<span class="number">4</span>]])
+y = np.array([<span class="number">2</span>, <span class="number">4</span>, <span class="number">6</span>, <span class="number">8</span>])
+
+<span class="comment"># Split data</span>
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.25</span>)
+
+<span class="comment"># Train model</span>
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+<span class="comment"># Predict</span>
+y_pred = model.predict(X_test)
+
+<span class="comment"># Evaluate</span>
+print(<span class="string">"MSE:"</span>, mean_squared_error(y_test, y_pred))</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🐍 11. Virtual Environment</h4>
+                    <div class="code-block" data-language="bash">
+<pre><span class="comment"># 🐍 Virtual Env Boilerplate (Terminal)</span>
+python -m venv venv
+source venv/bin/activate  <span class="comment"># or venv\Scripts\activate on Windows</span>
+pip install -r requirements.txt</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🧪 12. Pytest Boilerplate</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># 🧪 Pytest example</span>
+<span class="keyword">def</span> <span class="function">add</span>(a, b):
+    <span class="keyword">return</span> a + b
+
+<span class="keyword">def</span> <span class="function">test_add</span>():
+    <span class="keyword">assert</span> add(<span class="number">2</span>, <span class="number">3</span>) == <span class="number">5</span></pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🧹 13. Clean Code Template</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># ✨ Clean Code Helper Template</span>
+<span class="keyword">def</span> <span class="function">process_data</span>(data: list) -> list:
+    <span class="string">"""
+    Process a list of data by removing None values 
+    and returning sorted list
+    """</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> isinstance(data, list):
+        <span class="keyword">raise</span> ValueError(<span class="string">"Input must be a list"</span>)
+
+    cleaned = [d <span class="keyword">for</span> d <span class="keyword">in</span> data <span class="keyword">if</span> d <span class="keyword">is not</span> <span class="keyword">None</span>]
+    <span class="keyword">return</span> sorted(cleaned)</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🧩 14. Python Module Template</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># 📦 YourModule/__init__.py</span>
+<span class="comment"># Initializes your module</span>
+
+<span class="comment"># 📦 YourModule/utils.py</span>
+<span class="keyword">def</span> <span class="function">greet</span>(name):
+    <span class="keyword">return</span> <span class="string">f"Hello, {name}!"</span>
+
+<span class="comment"># 📦 main.py</span>
+<span class="keyword">from</span> YourModule.utils <span class="keyword">import</span> greet
+
+print(greet(<span class="string">"Developer"</span>))</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>📁 15. .gitignore Template</h4>
+                    <div class="code-block" data-language="bash">
+<pre><span class="comment"># 🔥 .gitignore Template</span>
+__pycache__/
+*.pyc
+.env
+venv/
+.DS_Store
+.ipynb_checkpoints/</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>⚡ 16. VSCode Settings</h4>
+                    <div class="code-block" data-language="json">
+<pre><span class="comment">// ⚙️ .vscode/settings.json</span>
+{
+  <span class="string">"python.formatting.provider"</span>: <span class="string">"black"</span>,
+  <span class="string">"editor.formatOnSave"</span>: <span class="keyword">true</span>,
+  <span class="string">"python.linting.pylintEnabled"</span>: <span class="keyword">true</span>,
+  <span class="string">"python.linting.enabled"</span>: <span class="keyword">true</span>
+}</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>🧷 17. Requirements.txt</h4>
+                    <div class="code-block" data-language="text">
+<pre><span class="comment"># 📦 requirements.txt</span>
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+fastapi
+uvicorn</pre>
+                    </div>
+                </div>
+
+                <div class="mini-section">
+                    <h4>📚 18. Jupyter Notebook Setup</h4>
+                    <div class="code-block" data-language="python">
+<pre><span class="comment"># 📓 Notebook Boilerplate Cell</span>
+%load_ext autoreload
+%autoreload <span class="number">2</span>
+%matplotlib inline
+
+<span class="keyword">import</span> warnings
+warnings.filterwarnings(<span class="string">"ignore"</span>)
+
+<span class="keyword">import</span> pandas <span class="keyword">as</span> pd
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🐍 Python Boilerplate Collection - Your Complete Development Reference Guide</p>
+            <p>Copy, customize, and code faster with these professional templates</p>
+        </div>
+    </div>
+
+    <script>
+        // Add copy functionality to code blocks
+        document.querySelectorAll('.code-block').forEach(block => {
+            const button = document.createElement('button');
+            button.textContent = '📋 Copy';
+            button.style.cssText = `
+                position: absolute;
+                top: 10px;
+                left: 15px;
+                background: rgba(102, 126, 234, 0.2);
+                color: #a0aec0;
+                border: none;
+                padding: 6px 12px;
+                border-radius: 6px;
+                font-size: 0.75rem;
+                cursor: pointer;
+                font-family: inherit;
+                transition: all 0.2s ease;
+            `;
+            
+            button.addEventListener('click', () => {
+                const code = block.querySelector('pre').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    button.textContent = '✅ Copied!';
+                    setTimeout(() => {
+                        button.textContent = '📋 Copy';
+                    }, 2000);
+                });
+            });
+            
+            button.addEventListener('mouseenter', () => {
+                button.style.background = 'rgba(102, 126, 234, 0.3)';
+            });
+            
+            button.addEventListener('mouseleave', () => {
+                button.style.background = 'rgba(102, 126, 234, 0.2)';
+            });
+            
+            block.style.position = 'relative';
+            block.appendChild(button);
+        });
+
+        // Print functionality
+        const printButton = document.createElement('button');
+        printButton.innerHTML = '🖨️ Print PDF';
+        printButton.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 500;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        `;
+        
+        printButton.addEventListener('click', () => {
+            window.print();
+        });
+        
+        printButton

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Prompt Pack for Developers & Data Analysts</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1in;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 1rem;
+        }
+        
+        .header h1 {
+            color: #1e40af;
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            color: #6b7280;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .section {
+            margin-bottom: 2.5rem;
+            break-inside: avoid;
+        }
+        
+        .section-title {
+            background: linear-gradient(135deg, #2563eb, #3b82f6);
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .prompt-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            padding: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .prompt-title {
+            color: #059669;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .prompt-title::before {
+            content: "✅";
+        }
+        
+        .prompt-text {
+            background: #1f2937;
+            color: #f3f4f6;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-left: 4px solid #10b981;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .emoji {
+            font-size: 1.2rem;
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            border-top: 2px solid #e5e7eb;
+            text-align: center;
+            color: #6b7280;
+            font-size: 0.9rem;
+        }
+        
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            
+            .prompt-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 ChatGPT Prompt Pack</h1>
+        <div class="subtitle">For Developers & Data Analysts</div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">
+            <span class="emoji">🔧</span>
+            Coding & Debugging
+        </h2>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Debug Python Code</h3>
+            <div class="prompt-text">I'm getting an error in my Python code. Here's the snippet: [PASTE YOUR CODE HERE] Please explain the error and how I can fix it.</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Optimize Code for Performance</h3>
+            <div class="prompt-text">Can you optimize the following Python code for performance and readability? [PASTE CODE] Please add comments explaining what you changed.</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Generate Unit Tests</h3>
+            <div class="prompt-text">Write unit tests for the following Python function using unittest: [PASTE FUNCTION]</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">
+            <span class="emoji">📊</span>
+            Data Analysis & Visualization
+        </h2>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Explore a Dataset</h3>
+            <div class="prompt-text">I have a CSV file with the following columns: [list columns]. Suggest an Exploratory Data Analysis (EDA) plan and generate Python code using pandas and seaborn.</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Clean Messy Data</h3>
+            <div class="prompt-text">Here's a description of my messy data:
+- Missing values
+- Duplicate rows
+- Columns with inconsistent formats
+Can you write Python code to clean this using pandas?</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Create a Dashboard</h3>
+            <div class="prompt-text">Generate Streamlit code for a dashboard that shows:
+- A bar chart of sales per region
+- A line chart for monthly trends
+- A dropdown to filter by product</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">
+            <span class="emoji">🧠</span>
+            Machine Learning
+        </h2>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Build a Model from Scratch</h3>
+            <div class="prompt-text">Give me Python code to build a [Linear Regression / Random Forest / SVM] model on this dataset: [dataset description]. Include train-test split, model training, and evaluation metrics.</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Explain ML Concepts Simply</h3>
+            <div class="prompt-text">Explain the concept of [Gradient Descent / Overfitting / Cross-validation] as if I were a beginner.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">
+            <span class="emoji">🌐</span>
+            APIs & Automation
+        </h2>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Create a FastAPI App</h3>
+            <div class="prompt-text">Give me boilerplate code for a FastAPI app with:
+- A homepage route
+- A POST route that takes JSON data
+- Validation using Pydantic</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Automate a Task with Python</h3>
+            <div class="prompt-text">Write a Python script to:
+- Scrape product data from [site]
+- Save it to CSV
+- Run daily at 9am (explain how to schedule this with cron or Task Scheduler)</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">
+            <span class="emoji">🧪</span>
+            Testing & Deployment
+        </h2>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Add Logging</h3>
+            <div class="prompt-text">Add logging to the following Python script for better debugging and traceability: [PASTE SCRIPT]</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Dockerize a Python App</h3>
+            <div class="prompt-text">Give me a Dockerfile to containerize a Python FastAPI app, and instructions to build and run the image.</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">
+            <span class="emoji">📄</span>
+            Documentation & Docstrings
+        </h2>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Write a README</h3>
+            <div class="prompt-text">Write a professional README.md file for this project:
+- Name: [Your project name]
+- What it does
+- How to run it
+- Dependencies</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Auto-generate Docstrings</h3>
+            <div class="prompt-text">Add clear docstrings to the following Python functions for better readability and documentation: [PASTE CODE]</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 class="section-title">
+            <span class="emoji">🎓</span>
+            Learning & Interview Prep
+        </h2>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Interview Practice</h3>
+            <div class="prompt-text">Ask me 5 technical interview questions for a [Data Analyst / Backend Developer / ML Engineer] role. After each question, wait for my answer, then give feedback and the correct answer.</div>
+        </div>
+        
+        <div class="prompt-item">
+            <h3 class="prompt-title">Learning Roadmap</h3>
+            <div class="prompt-text">Give me a beginner-to-advanced learning roadmap for [Python / Data Science / AI / Web Development]. Include resources, hands-on projects, and study tips.</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><strong>Usage Tips:</strong></p>
+        <p>Replace bracketed placeholders [like this] with your specific content • Copy and paste prompts directly into ChatGPT • Modify prompts to fit your specific needs</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">Generated on May 23, 2025</p>
+    </div>
+
+    <script>
+        // Add print functionality
+        function printPDF() {
+            window.print();
+        }
+        
+        // Add keyboard shortcut for printing
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && event.key === 'p') {
+                event.preventDefault();
+                printPDF();
+            }
+        });
+        
+        // Add a print button (hidden by default, shown when hovering)
+        const printButton = document.createElement('button');
+        printButton.innerHTML = '🖨️ Print PDF';
+        printButton.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        `;
+        printButton.addEventListener('click', printPDF);
+        document.body.appendChild(printButton);
+        
+        // Show/hide print button on hover
+        printButton.addEventListener('mouseenter', () => {
+            printButton.style.opacity = '1';
+        });
+        printButton.addEventListener('mouseleave', () => {
+            printButton.style.opacity = '0.8';
+        });
+    </script>
+</body>
+</html>
